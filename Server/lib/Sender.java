@@ -31,6 +31,7 @@ public class Sender {
         filename = Paths.get(filename).toAbsolutePath().toString();
         
         try {
+            System.out.println(java.time.LocalTime.now());
             System.out.println("Sending file...");
             FileInputStream fis = new FileInputStream(filename);
             byte[] buffer = new byte[4096];
@@ -39,7 +40,8 @@ public class Sender {
                 out.write(buffer, 0, Math.min(buffer.length, n));
             }
             fis.close();
-            System.out.println("Done!");
+            System.out.println("Sent Done!");
+            System.out.println(java.time.LocalTime.now());
         } catch (IOException e) {
             System.out.println(e);
         }

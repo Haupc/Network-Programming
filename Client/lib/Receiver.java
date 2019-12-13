@@ -20,6 +20,7 @@ public class Receiver {
             int read = 0;
             long totalRead = 0;
             long remaining = Protocol.FILE_SIZE;
+            System.out.println(java.time.LocalTime.now());
             System.out.println("Reading file: " + Protocol.FILE_NAME);
             while( (read = in.read(buffer, 0, (int)Math.min(buffer.length, remaining))) > 0 
                     && totalRead < Protocol.FILE_SIZE) {
@@ -27,7 +28,8 @@ public class Receiver {
                 remaining -= read;
                 fos.write(buffer, 0, read);
             }
-            System.out.println("done!");
+            System.out.println(java.time.LocalTime.now());
+            System.out.println("receiveed done!");
             fos.close();
             return;
         } catch (Exception e) {
